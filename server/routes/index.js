@@ -9,9 +9,9 @@ exports = module.exports = function (app) {
                     <title>Keystone With React And Redux</title>
                 </head>
                 <body>
-                        <div class="react-container">
-                        <h1> Hello World </h1>
-                        </div>
+                    <div class="react-container">
+                    </div>
+                    <script src="bundle.js"></script>
                 </body>
             </html>
             `;
