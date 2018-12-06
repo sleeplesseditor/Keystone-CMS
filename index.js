@@ -1,14 +1,17 @@
 //import keystone
 var keystone = require('keystone');
 
-const db = require('./server/config/keys').mongoURI;
-const cookie_secret = require('./server/config/keys').cookieSecret;
+const db = require('./config/keys').mongoURI;
+const cookie_secret = require('./config/keys').cookieSecret;
 
 // Set up our keystone instance
 keystone.init({
   'name': 'Keystone CMS',
   // Paths to our application static files
-  'static': [],
+  'static': [
+    './server/public/js/',
+    './server/public/img/',
+  ],
   'auto update': true,
   // The url for your MongoDB connection
   'mongo': `${db}`,
@@ -22,6 +25,7 @@ keystone.init({
 
 keystone.import('./server/models');
 
-// Add routes here 
+// Load routes here 
+keystone.set('routes', require('./server/routes'));
 
 keystone.start();
